@@ -19,13 +19,13 @@ The application integrates with the Stark Bank API to automate invoice generatio
 
 ## Technologies Used
 
-* Python
-* FastAPI
-* Stark Bank Python SDK
-* Pytest
-* Ngrok
-* Git
-* GitHub
+Tecnologia | Versão
+Python | 3.14
+FastAPI | 0.116+
+Stark Bank Python SDK | Latest
+Pytest | 9+
+Ngrok | 3+
+Git | 2+
 
 ---
 
@@ -176,13 +176,13 @@ Todo o fluxo foi desenvolvido utilizando o ambiente **Sandbox da Stark Bank**.
 
 ## Tecnologias Utilizadas
 
-* Python
-* FastAPI
-* Stark Bank Python SDK
-* Pytest
-* Ngrok
-* Git
-* GitHub
+Tecnologia | Versão
+Python | 3.14
+FastAPI | 0.116+
+Stark Bank Python SDK | Latest
+Pytest | 9+
+Ngrok | 3+
+Git | 2+
 
 ---
 
