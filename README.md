@@ -1,224 +1,81 @@
-Stark Bank Backend Challenge
+🏦 Stark Bank Backend Challenge
+Este projeto foi desenvolvido para o Stark Bank Backend Developer Trial. A aplicação automatiza o ciclo de faturamento e transferência, integrando-se à API da Stark Bank no ambiente Sandbox.
 
-Implementation developed for the Stark Bank Backend Developer Trial.
-
-This project integrates with the Stark Bank API to automatically generate invoices and process webhook events to trigger transfers when invoices are credited.
+English | Português
 
 🇺🇸 English Documentation
-Overview
-
-This project was developed for the Stark Bank Backend Developer Trial.
-
+📌 Overview
 The application integrates with the Stark Bank API to:
 
-Generate 8 to 12 invoices with random values and customers.
+Automatic Generation: Create 8 to 12 invoices with random values and customers.
 
-Receive webhook events from Stark Bank and automatically trigger a transfer when an invoice is credited.
+Webhook Processing: Receive real-time events and trigger automatic transfers when an invoice is credited.
 
-The entire flow was built using the Stark Bank Sandbox environment.
+Sandbox Environment: Full flow validation using Stark Bank's testing environment.
 
-Technologies Used
+🛠 Technologies
 
-Technology | Version
-Python | 3.14
-FastAPI | 0.116+
-Stark Bank Python SDK | Latest
-Pytest | 9+
-Ngrok | 3+
-Git | 2+
+Technology,Version
+Python,3.14
+FastAPI,0.116+
+Stark Bank SDK,Latest
+Pytest,9+
+Ngrok,3+
 
-Architecture
+📂 Project Structure
+app/: Core logic (FastAPI & Invoice Engine)
 
-Application flow:
+config/: SDK and Environment Setup
 
-Project Structure
+scripts/: Script to trigger batch invoice creation
 
-starkbank-backend-challenge
+tests/: Unit and integration tests
 
-app
-    main.py
-    invoice_generator.py
+keys/: ECDSA Public Key
 
-config
-    stark_setup.py
+requirements.txt: Project dependencies
 
-scripts
-    create_invoice.py
-
-tests
-    test_invoice_generator.py
-    test_webhook_logic.py
-    test_webhook_ignore.py
-    test_transfer_amount.py
-
-docs
-    architecture.drawio.png
-
-keys
-    public-key.pem
-
-requirements.txt
-README.md
-
-Running the Project
-
-Clone repository
-
+🚀 How to Run
+Clone & Setup
 git clone https://github.com/ArthurDon/starkbank-backend-challenge
-
 cd starkbank-backend-challenge
-
-Create virtual environment
-
 python -m venv venv
-venv\Scripts\activate
-
-Install dependencies
-
+source venv/bin/activate (ou venv\Scripts\activate no Windows)
 pip install -r requirements.txt
 
-Run the API
-
+Start API & Webhook
 uvicorn app.main:app --reload
-
-Expose webhook using ngrok
-
 ngrok http 8000
-
-Use the generated URL as the webhook endpoint
-
-https://xxxx.ngrok-free.dev/webhook
 
 Generate Invoices
-
 python -m scripts.create_invoice
-
-Each execution generates 8 to 12 invoices.
-
-Running Tests
-
-pytest
-
-Example output
-
-4 passed in 1.90s
-
-What I Learned During This Challenge
-
-During the development of this project I practiced and improved skills related to:
-
-Stark Bank API integration
-
-webhook-based backend architectures
-
-building APIs with FastAPI
-
-unit testing with Pytest
-
-exposing local services using ngrok
-
-backend project organization
 
 🇧🇷 Documentação em Português
-Visão Geral
+📌 Visão Geral
+Esta aplicação automatiza fluxos financeiros utilizando a API da Stark Bank:
 
-Este projeto foi desenvolvido para o Stark Bank Backend Developer Trial.
+Geração em Lote: Cria entre 8 e 12 faturas (invoices) com dados aleatórios.
 
-A aplicação integra com a API da Stark Bank para:
+Automação de Transferência: Ao receber a confirmação de crédito via Webhook, o sistema inicia automaticamente uma transferência do valor.
 
-Gerar automaticamente 8 a 12 invoices com valores e clientes aleatórios.
+Segurança: Implementação preparada para validação de assinaturas e chaves ECDSA.
 
-Receber eventos via webhook enviados pela Stark Bank e, quando uma invoice é creditada, enviar automaticamente uma transferência com o valor recebido (menos eventuais taxas).
-
-Todo o fluxo foi desenvolvido utilizando o ambiente Stark Bank Sandbox.
-
-Tecnologias Utilizadas
-
-Tecnologia | Versão
-Python | 3.14
-FastAPI | 0.116+
-Stark Bank Python SDK | Latest
-Pytest | 9+
-Ngrok | 3+
-Git | 2+
-
-Arquitetura
-
-Fluxo da aplicação:
-
-Estrutura do Projeto
-
-starkbank-backend-challenge
-
-app
-    main.py
-    invoice_generator.py
-
-config
-    stark_setup.py
-
-scripts
-    create_invoice.py
-
-tests
-    test_invoice_generator.py
-    test_webhook_logic.py
-    test_webhook_ignore.py
-    test_transfer_amount.py
-
-docs
-    architecture.drawio.png
-
-keys
-    public-key.pem
-
-requirements.txt
-README.md
-
-Como Executar o Projeto
-
-Clonar o repositório
-
-git clone https://github.com/ArthurDon/starkbank-backend-challenge
-
-cd starkbank-backend-challenge
-
-Criar ambiente virtual
-
-python -m venv venv
-venv\Scripts\activate
-
-Instalar dependências
-
-pip install -r requirements.txt
-
-Rodar a API
-
-uvicorn app.main:app --reload
-
-Expor o webhook usando ngrok
-
-ngrok http 8000
-
-Configure a URL gerada como webhook na Stark Bank
-
-https://xxxx.ngrok-free.dev/webhook
-
-Gerar Invoices
-
-python -m scripts.create_invoice
-
-Cada execução cria 8 a 12 invoices.
-
-Executar Testes
-
+🧪 Testes
+Para garantir a confiabilidade do fluxo, execute a suíte de testes:
 pytest
 
-Exemplo de saída
+Exemplo de saída: 4 passed in 1.90s
 
-4 passed in 1.90s
+🧠 Aprendizados
+Durante este desafio, foram consolidados conhecimentos em:
 
-Author
+Arquiteturas baseadas em Webhooks.
 
+Consumo de APIs bancárias de alta performance.
+
+Desenvolvimento de APIs assíncronas com FastAPI.
+
+Mocking e testes de integração com Pytest.
+
+👤 Author
 Arthur Donato
-https://github.com/ArthurDon
