@@ -6,3 +6,4 @@ __pycache__/
 .ngrok2/
 .vscode/
 ngrok.exe
+keys/private-key.pem

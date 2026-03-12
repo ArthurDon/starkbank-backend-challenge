@@ -1,9 +1,9 @@
 from unittest.mock import patch
 from app.main import webhook
-import asyncio
+import pytest
 
 
-class DummyRequest:
+class FakeRequest:
     async def json(self):
         return {
             "event": {
@@ -18,14 +18,15 @@ class DummyRequest:
         }
 
 
-def test_transfer_amount_minus_fee():
+@pytest.mark.asyncio
+@patch("starkbank.transfer.create")
+async def test_transfer_amount_minus_fee(mock_transfer):
 
-    with patch("starkbank.transfer.create") as mock_transfer:
+    request = FakeRequest()
 
-        request = DummyRequest()
+    await webhook(request)
 
-        asyncio.run(webhook(request))
+    transfer_list = mock_transfer.call_args.args[0]
+    transfer = transfer_list[0]
 
-        args = mock_transfer.call_args[0][0][0]
-
-        assert args.amount == 1900
+    assert transfer.amount == 1900
