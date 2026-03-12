@@ -81,7 +81,7 @@ Transfer automatically executed
 Full architecture diagram available at:
 
 ```
-docs/architecture.png
+docs/architecture.drawio.png
 ```
 
 ---
@@ -238,7 +238,7 @@ Transfer criada automaticamente
 Fluxograma detalhado disponível em:
 
 ```
-docs/architecture.png
+docs/architecture.drawio.png
 ```
 
 ---
