@@ -35,7 +35,7 @@ Todo o fluxo foi desenvolvido utilizando o ambiente **Stark Bank Sandbox**.
 
 Fluxo da aplicação:
 
-![Arquitetura do Sistema](docs/architecture.png)
+![Arquitetura](docs/architecture.drawio.png)
 
 ---
 
@@ -183,7 +183,7 @@ The application integrates with the Stark Bank API to automate invoice generatio
 
 Application flow:
 
-![System Architecture](docs/architecture.png)
+![System Architecture](docs/architecture.drawio.png)
 
 ---
 
