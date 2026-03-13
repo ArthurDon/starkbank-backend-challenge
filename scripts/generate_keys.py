@@ -21,5 +21,3 @@ with open("public-key.pem", "wb") as f:
             format=serialization.PublicFormat.SubjectPublicKeyInfo
         )
     )
-
-print("Chaves geradas!")
