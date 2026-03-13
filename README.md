@@ -11,21 +11,29 @@ This project integrates with the Stark Bank API to automate invoice creation and
 
 ## Overview
 
-This project was developed for the **Stark Bank Backend Developer Trial**.
+This project was developed for the Stark Bank Backend Developer Trial.
 
 The application integrates with the Stark Bank API to automate invoice generation and process webhook events that trigger transfers when an invoice is credited.
+
+- Automation: The system periodically generates invoices with random values and customers.
+
+- Webhooks: When the Stark Bank Sandbox simulates a payment, the application receives an event.
+
+- Logic: If the event type is credited, the application automatically creates a transfer with the received amount (minus fees).
+
+- Filtering: Events such as created or paid are logged but ignored.
 
 ---
 
 ## Technologies Used
 
-Tecnologia | Versão
-Python | 3.14
-FastAPI | 0.116+
-Stark Bank Python SDK | Latest
-Pytest | 9+
-Ngrok | 3+
-Git | 2+
+Tecnologia	Versão
+Python	3.14
+FastAPI	0.116+
+Stark Bank Python SDK	Latest
+Pytest	9+
+Ngrok	3+
+Git	2+
 
 ---
 
@@ -35,26 +43,30 @@ Git | 2+
 starkbank-backend-challenge
 │
 ├── app
-│   ├── main.py
-│   └── invoice_generator.py
-│
+│   └── main.py
+├── controllers
+│   └── webhook_controller.py
+├── services
+│   └── transfer_service.py
+├── jobs
+│   └── invoice_generator_job.py
+├── workers
+│   └── invoice_worker.py
 ├── config
 │   └── stark_setup.py
-│
 ├── scripts
 │   └── create_invoice.py
-│
 ├── tests
-│   ├── test_invoice_generator.py
-│   └── test_webhook_logic.py
-│
+│   ├── controllers
+│   ├── services
+│   ├── jobs
+│   └── workers
 ├── docs
-│   └── architecture.png
-│
+│   └── architecture.drawio.png
 ├── keys
 │   └── public-key.pem
-│
 ├── requirements.txt
+├── pytest.ini
 └── README.md
 ```
 
@@ -77,6 +89,7 @@ If event == credited
       ↓
 Transfer automatically executed
 ```
+
 
 Full architecture diagram available at:
 
@@ -170,7 +183,7 @@ Esta aplicação possui duas responsabilidades principais:
 1. Gerar automaticamente **8 a 12 invoices** com valores e clientes aleatórios.
 2. Receber **eventos via webhook** enviados pela Stark Bank e, quando uma invoice é **creditada**, enviar automaticamente uma **transferência** com o valor recebido (menos eventuais taxas).
 
-Todo o fluxo foi desenvolvido utilizando o ambiente **Sandbox da Stark Bank**.
+O sistema gera invoices periodicamente e o ambiente Sandbox simula o pagamento. Se o evento for credited, o sistema cria a transferência. Eventos como created ou paid são apenas registrados em log**.
 
 ---
 
@@ -179,7 +192,7 @@ Todo o fluxo foi desenvolvido utilizando o ambiente **Sandbox da Stark Bank**.
 Tecnologia | Versão
 Python | 3.14
 FastAPI | 0.116+
-Stark Bank Python SDK | Latest
+Stark Bank Python SDK,Latest
 Pytest | 9+
 Ngrok | 3+
 Git | 2+
@@ -192,26 +205,30 @@ Git | 2+
 starkbank-backend-challenge
 │
 ├── app
-│   ├── main.py
-│   └── invoice_generator.py
-│
+│   └── main.py
+├── controllers
+│   └── webhook_controller.py
+├── services
+│   └── transfer_service.py
+├── jobs
+│   └── invoice_generator_job.py
+├── workers
+│   └── invoice_worker.py
 ├── config
 │   └── stark_setup.py
-│
 ├── scripts
 │   └── create_invoice.py
-│
 ├── tests
-│   ├── test_invoice_generator.py
-│   └── test_webhook_logic.py
-│
+│   ├── controllers
+│   ├── services
+│   ├── jobs
+│   └── workers
 ├── docs
-│   └── architecture.png
-│
+│   └── architecture.drawio.png
 ├── keys
 │   └── public-key.pem
-│
 ├── requirements.txt
+├── pytest.ini
 └── README.md
 ```
 
@@ -222,17 +239,17 @@ starkbank-backend-challenge
 Fluxo da aplicação:
 
 ```
-Invoice criada
+Invoice created
       ↓
-Stark Bank Sandbox processa pagamento
+Stark Bank Sandbox processes payment
       ↓
-Webhook enviado
+Webhook sent
       ↓
-Aplicação recebe evento
+Application receives event
       ↓
-Se evento == credited
+If event == credited
       ↓
-Transfer criada automaticamente
+Transfer automatically executed
 ```
 
 Fluxograma detalhado disponível em:
